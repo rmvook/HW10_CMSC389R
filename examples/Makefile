@@ -1,7 +1,7 @@
 all: assemble load run
 
 assemble: hello.s
-	yasm -felf32 hello.s
+	nasm -felf32 hello.s
 
 load: hello.o
 	ld -m elf_i386 hello.o -o hello.x
