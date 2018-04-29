@@ -2,56 +2,41 @@ section .text
 global _start
 
 _start:
-	mov eax, 0
-	call tribonacci
-	
+    mov ebp, esp; for correct debugging
+    mov eax, 10
+    call tribonacci
+        
+tribonacci:
+    cmp eax, 0      ;jump to end if aex is 0
+    je end
+    
+    cmp eax, 1      ;jump to end if aex is 1
+    je end
+    
+    cmp eax, 2      ;jump to fix if aex is 2
+    je fix
+    
+    mov ecx, eax   ;move requested number to ecx for the loop counter
+    
+    mov eax, 0     ;initialize eax to 0
+    mov esi, 1     ;initialize esi to 0
+    mov edi, 1     ;initialize edi to 1
+l:
+    add eax, esi  
+    add eax, edi
+    
+    mov edx, eax
+    mov eax, esi
+    mov esi, edi
+    mov edi, edx
+    
+    loop l
+    
+end:
+    mov esp, ebp
+    pop ebp
+    ret
 
-tribonacci:	;when its called we have n in eax
-	push ebp
-	mov ebp, esp
-
-	push edi 
-	push esi
-
-	mov ecx, [ebp + 8]
-
-	cmp ecx, 0
-	je done
-
-	cmp ecx, 1
-	je one
-
-	cmp ecx, 2
-	je two
-
-	dec ecx
-	push ecx
-	call tribonacci
-	pop ecx
-
-	dec ecx
-	push ecx
-	call tribonacci
-	pop ecx
-
-	dec ecx
-	push ecx
-	call tribonacci
-	pop ecx
-
-	jmp done
-
-
-
-one:	;
-	add eax, 1
-	jmp done
-
-two:	;adds 1 to eax
-	add eax, 1
-	jmp done
-
-done:	;ending call
-	mov esp, ebp
-	pop ebp
-	ret
+fix:            ;decrements eax and jumps to the end 
+    dec eax
+    jmp end
