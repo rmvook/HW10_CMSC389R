@@ -1,7 +1,8 @@
-section .text
-global _start
+%include "io.inc"
 
-_start:
+section .text
+global CMAIN
+CMAIN:
     mov ebp, esp; for correct debugging
     mov eax, 10
     call tribonacci
@@ -40,3 +41,5 @@ end:
 fix:            ;decrements eax and jumps to the end 
     dec eax
     jmp end
+
+    
