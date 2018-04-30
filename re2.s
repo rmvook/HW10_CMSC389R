@@ -26,4 +26,4 @@ do_this:
 section .data
 x dd 0          ;setx x to 32 bit's of 0's, which is why xor above sets them to the values
 
-;eax is hex 00 0B 0A 61
+;eax is hex 33 38 39 52 which is 389r
