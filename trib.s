@@ -14,7 +14,7 @@ tribonacci:
     je fix
     mov ecx, eax   ;move requested number to ecx for the loop counter
     mov eax, 0     ;initialize eax to 0
-    mov esi, 1     ;initialize esi to 0
+    mov esi, 1     ;initialize esi to 1
     mov edi, 1     ;initialize edi to 1
 l:
     add eax, esi  
@@ -28,7 +28,6 @@ end:
     mov esp, ebp
     pop ebp
     ret
-
 fix:            ;decrements eax and jumps to the end 
     dec eax
     jmp end

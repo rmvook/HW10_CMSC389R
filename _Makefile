@@ -44,7 +44,7 @@ loadre2: re2.o
 runre2: re2.x
 	./re2.x
 
-allt: assemblet loadt runt
+all: assemblet loadt runt
 
 assemblet: trib.s
 	nasm -felf32 trib.s
